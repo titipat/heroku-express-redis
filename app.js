@@ -2,7 +2,7 @@
 
 let express = require('express');
 let app = express();
-let redis = require('redis').createClient();
+let redis = require('redis').createClient(process.env.REDIS_URL || '');
 let bodyParser = require('body-parser');
 let timestamp = require('time-stamp');
 
