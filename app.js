@@ -1,8 +1,13 @@
 'use strict';
 
+const REDIS_URL = process.env.REDIS_URL || '';
+let redis = require('redis').createClient(REDIS_URL);
+redis.on('connect', function() {
+	console.log(`connect redis on: ${REDIS_URL}`);
+});
+
 let express = require('express');
 let app = express();
-let redis = require('redis').createClient(process.env.REDIS_URL || '');
 let bodyParser = require('body-parser');
 let timestamp = require('time-stamp');
 
